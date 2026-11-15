@@ -1,0 +1,814 @@
+{
+  "pbtResults": {
+    "3.2 Write property test for `sort_by_distance` non-decreasing": {
+      "status": "not_run",
+      "lastRunTimestamp": 1794583525294
+    },
+    "2.3 Write property test for `get_level` always valid": {
+      "status": "passed",
+      "lastRunTimestamp": 1794752669536
+    },
+    "2.4 Write property test for `hash_user_id` correctness": {
+      "status": "passed",
+      "lastRunTimestamp": 1794753130676
+    },
+    "5.3 Write property test for `hash_user_id` in reports: for any integer user_id, the stored value equals `impact.hash_user_id(user_id)` (HMAC) and never contains the raw id.": {
+      "status": "passed",
+      "lastRunTimestamp": 1794753704038
+    },
+    "7.9 Write property test for price lookup: for any material key (including keys not in prices.json), the lookup function returns None or a complete dict with all required fields.": {
+      "status": "passed",
+      "lastRunTimestamp": 1794754829563
+    }
+  },
+  "executionHistory": {
+    "1.1 Add an optional `admin_user_id: int = 0` field to `Settings` in `config.py` (0 disables `/review`; a missing value must not stop the bot); add `ADMIN_USER_ID` to `.env.example` as a commented-out line.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581808394
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581834797
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794582423746
+      }
+    ],
+    "1.2 Add `CREATE TABLE IF NOT EXISTS` statements for `reports`, `impact`, and `overpass_cache` tables to `storage.init_db()` using the schemas in `design.md`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581809629
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581835050
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794582424264
+      }
+    ],
+    "1.3 Write unit tests for the new config field (missing `ADMIN_USER_ID` gives 0) and for the three new tables being created in an in-memory DB.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581809790
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794582622841
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583000280
+      }
+    ],
+    "2.1 Create `src/qayta/impact.py` with `hash_user_id`, `total_points`, `get_level`, `LEVELS`, `increment_items`, `increment_reports`, `get_stats`, and `get_leaderboard` as specified in `design.md`, following Review corrections 7, 8 and 12: `hash_user_id` is HMAC-SHA256 keyed with the bot token, at most 20 items per user per day count towards points (store the day and daily count), levels are locale keys, and the leaderboard returns an alias such as \"Recycler #A1F3\". Use `storage._require_conn()` for DB access.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581809881
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794582624661
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583001221
+      }
+    ],
+    "2.2 Write property test for `total_points` identity": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581809957
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583024784
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794752516179
+      }
+    ],
+    "2.3 Write property test for `get_level` always valid": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810040
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794752537888
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753063259
+      }
+    ],
+    "2.4 Write property test for `hash_user_id` correctness": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810124
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753064252
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753147436
+      }
+    ],
+    "2.5 Write unit tests for `increment_items`/`increment_reports` upsert semantics and `get_leaderboard` ordering using in-memory SQLite.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810200
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753147911
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753251669
+      }
+    ],
+    "3.1 Create `src/qayta/places.py` with `haversine`, `sort_by_distance`, `build_overpass_query`, and `fetch_nearby` as specified in `design.md`, following Review corrections 3 and 4: query `nwr[\"amenity\"=\"recycling\"]` and `nwr[\"shop\"=\"scrap\"]` with `out center`; try overpass-api.de, then the maps.mail.ru mirror; return points without `recycling:*` tags too, marked `materials_known: false` and listed after points known to accept the material. `fetch_nearby` checks `overpass_cache`, calls Overpass via `httpx.AsyncClient`, writes result to cache.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810361
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794582625715
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583001979
+      }
+    ],
+    "3.2 Write property test for `sort_by_distance` non-decreasing": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810444
+      },
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583026874
+      }
+    ],
+    "3.3 Write unit tests for `haversine` (identity at 0,0; ~111 km per degree), `build_overpass_query` contains osm_tag, cache hit path, cache miss path, and Overpass failure returning empty list. Mock `httpx` throughout.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810553
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794752539930
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753063865
+      }
+    ],
+    "4. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810621
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756490711
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756555070
+      }
+    ],
+    "5.1 Create `src/qayta/reports.py` with `add_report`, `get_pending_reports`, `approve_report`, and `reject_report` as specified in `design.md`. `add_report` calls `impact.hash_user_id` and stores `user_id_hash`, never the raw ID.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810688
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753274933
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753402826
+      }
+    ],
+    "5.2 Write unit tests for the insert/approve/reject lifecycle: verify `status` transitions, `reviewed_at` is set on review, and that `user_id_hash != str(user_id)`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810758
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753413662
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753631651
+      }
+    ],
+    "5.3 Write property test for `hash_user_id` in reports: for any integer user_id, the stored value equals `impact.hash_user_id(user_id)` (HMAC) and never contains the raw id.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810828
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753639442
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753763477
+      }
+    ],
+    "6.1 Add all new keys listed in Requirement 16.1 to `locales/uz.json`, `locales/ru.json`, and `locales/en.json` with real translated values (not placeholders). Keys: `map.title`, `map.choose_material`, `map.no_points`, `map.route`, `map.verified_on`, `map.no_location`, `map.open_osm`, `report.received`, `report.invalid`, `report.point_form`, `report.price_form`, `review.none_pending`, `review.approved`, `review.rejected`, `stats.result`, `stats.level`, `stats.items`, `stats.reports`, `stats.points`, `impact.open_map_button`, `cmd.review`, `cmd.stats`, `cmd.report`, `level.beginner`, `level.recycler`, `level.champion`, `level.legend`, `price.outdated`, `map.materials_unknown`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810907
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753275843
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753404436
+      }
+    ],
+    "7. Extend `bot.py` with new handlers": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581810975
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756635179
+      }
+    ],
+    "7.1 Implement `web_app_data_handler`: parse `update.message.web_app_data.data` as JSON, validate required fields for `type=\"point\"` or `type=\"price\"`, call `reports.add_report`, reply with `report.received`; on validation failure reply `report.invalid`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811043
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753413739
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753631848
+      }
+    ],
+    "7.2 Implement `review_handler` (`/review` command): check `user_id == settings.admin_user_id`; if not admin return silently. Fetch pending reports, send one message per report with `[Approve ✅ | Reject ❌]` inline keyboard (`callback_data=\"review_approve_{id}\"` / `\"review_reject_{id}\"`). Reply `review.none_pending` when queue is empty.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811113
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753639676
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753764275
+      }
+    ],
+    "7.3 Implement `review_callback_handler`: parse action and report ID; call `reports.approve_report` or `reports.reject_report`; on approve also call `impact.increment_reports` for the reporter's hash; edit message to show `review.approved` or `review.rejected`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811178
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753772908
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753939650
+      }
+    ],
+    "7.4 Implement `stats_handler` (`/stats` command): hash user ID, call `impact.get_stats`, reply with formatted `stats.result`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811254
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753940060
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754119611
+      }
+    ],
+    "7.5 Implement `location_handler`: store `(lat, lon)` in `context.user_data[\"last_location\"]` (in-memory only, not DB).": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811321
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754120605
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754193081
+      }
+    ],
+    "7.6 Extend `classify_and_reply`: after a successful classification, load `webapp/data/prices.json` once (cache in `context.bot_data`), look up best price for the material, append price line when available (add `price.outdated` when the date is older than 60 days); only when `WEBAPP_URL` starts with `https://`, append a `WebAppInfo` inline button `\"🗺 Open Map\"` pointing to `{WEBAPP_URL}#map?material={KEY}`; call `impact.increment_items(user_id_hash)`. Where `context.user_data[\"last_location\"]` is set, call `places.fetch_nearby` and append nearest point name.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811390
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754201540
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754522960
+      }
+    ],
+    "7.7 Register all new handlers in `register_handlers`: `web_app_data_handler`, `report_handler`, `review_handler`, `review_callback_handler`, `stats_handler`, `location_handler`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811456
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754535104
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754684951
+      }
+    ],
+    "7.8 Write unit tests for all new handlers using `AsyncMock`. Test: `web_app_data_handler` calls `reports.add_report` and replies `report.received`; invalid payload replies `report.invalid`. `review_handler` is silent for non-admin, sends message for admin. `review_callback_handler` calls approve/reject and increments reports on approve. `stats_handler` replies with stats. `classify_and_reply` appends map button.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811531
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754910848
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755078534
+      }
+    ],
+    "7.9 Write property test for price lookup: for any material key (including keys not in prices.json), the lookup function returns None or a complete dict with all required fields.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811613
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754685344
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754897031
+      }
+    ],
+    "8.1 Add `--check` flag: when present, validate settings, call `storage.init_db(\":memory:\")` to verify schema creation, parse `webapp/data/points.json` and `webapp/data/prices.json` as JSON arrays, print success and exit 0; exit 1 with a descriptive message on any failure.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811680
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754535378
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754896922
+      }
+    ],
+    "8.2 Set the bot menu button via `await app.bot.set_chat_menu_button(menu_button=MenuButtonWebApp(text=\"🗺 Qayta\", web_app=WebAppInfo(url=settings.webapp_url)))` in the `post_init` callback (skip unless `webapp_url` starts with `https://`).": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811747
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794754911339
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755077749
+      }
+    ],
+    "9. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811859
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756651956
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756914357
+      }
+    ],
+    "10.1 Create `webapp/data/points.json` containing an empty JSON array `[]`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581811954
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755184005
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755484684
+      }
+    ],
+    "10.2 Create `webapp/data/prices.json` containing an empty JSON array `[]`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812019
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755190504
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755485478
+      }
+    ],
+    "11.1 Create `webapp/index.html`: single-page shell with bottom nav bar (four `<button data-tab=\"...\">` elements), a `<main id=\"tab-content\">` area, and CDN `<script>` tags for Leaflet, followed by local script tags for `i18n.js`, `app.js`, `map.js`, `prices.js`, `me.js`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812085
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755505113
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755750401
+      }
+    ],
+    "11.2 Create `webapp/style.css` with CSS custom properties for the dark-green design system (colors, radius, tab height). Ensure minimum 375 px usability and tap targets ≥ 44 × 44 px.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812147
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755505265
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755751191
+      }
+    ],
+    "11.3 Create `webapp/i18n.js` with `STRINGS` object containing `uz`, `ru`, and `en` sub-objects for all keys defined in Requirement 16.1, plus tab labels. Implement `t(key, params)` function with `localStorage` language preference and fallback to `\"uz\"`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812212
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755505723
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755751438
+      }
+    ],
+    "12.1 Create `webapp/app.js`: call `Telegram.WebApp.ready()` and `Telegram.WebApp.expand()`; apply `themeParams` to CSS custom properties; implement tab router that shows/hides tab content on bottom-bar button clicks; implement language switcher that persists choice in `localStorage` and re-renders; implement URL-hash routing so `#map?material={KEY}` navigates to Map tab and passes `KEY` to `map.js`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812282
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755764565
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755968056
+      }
+    ],
+    "13.1 Create `webapp/map.js`: on Map tab activation, use Telegram `LocationManager` when available, then `navigator.geolocation`, then let the user pick Tashkent, Ohangaron or Samarkand or tap the map. Initialise a Leaflet map on that position; fetch `data/points.json` and merge with Overpass results (curated records take precedence by `id`; try overpass-api.de, then the maps.mail.ru mirror; never set a `User-Agent` header). Points known to accept the material come first; others are shown with `map.materials_unknown`. Popups show name, materials, phone, hours, verified-date badge, best price with `price.outdated` when older than 60 days, and a route link.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812350
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755986383
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756209755
+      }
+    ],
+    "14.1 Add Scan-tab content to `app.js` or as a separate module: render a short localised guide and a button that calls `Telegram.WebApp.close()` so that the user sends the photo in the chat.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812420
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755986602
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756209971
+      }
+    ],
+    "14.2 Create `webapp/prices.js`: fetch `data/prices.json`; group rows by material using CATALOGUE key order; render an HTML table with columns Material, Point, Price (so'm/kg), Source, Date; show \"—\" and a hint to send `/report` for missing prices; add `price.outdated` for prices older than 60 days.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812487
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755986856
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756210453
+      }
+    ],
+    "15.1 Create `webapp/me.js`: read `items`, `reports` and `rank` from the URL hash set by the bot; display items sorted, approved reports, total points, a localised level badge and level thresholds, mirroring `getLevel` and `totalPoints` from `impact.py`. Without hash values show an invitation to send `/stats`. No leaderboard file: the leaderboard lives in `/stats`.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812559
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756240142
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756471470
+      }
+    ],
+    "15.2 Add the `#report` screen: forms for a new point and a new price that call `Telegram.WebApp.sendData(JSON.stringify(...))`, shown only when opened from the `/report` keyboard button.": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812632
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756951227
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794757109310
+      }
+    ],
+    "16. Final checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794581812697
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794757124440
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794757209196
+      }
+    ],
+    "1. Extend `config.py` and `storage.py`": [
+      {
+        "executionId": "25b6c66f-87bf-4cb7-9772-f3d06f5a3e1d",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794583000371
+      }
+    ],
+    "3. Implement `places.py`": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753063983
+      }
+    ],
+    "2. Implement `impact.py`": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753251765
+      }
+    ],
+    "6. Add locale keys to all three locale files": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753404510
+      }
+    ],
+    "5. Implement `reports.py`": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794753763552
+      }
+    ],
+    "8. Extend `__main__.py`": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755077912
+      }
+    ],
+    "7.6a Implement `report_handler` (`/report`): when `WEBAPP_URL` is https, show a `ReplyKeyboardMarkup` with `KeyboardButton(web_app=WebAppInfo(url=f\"{WEBAPP_URL}#report\"))`, because `sendData` works only from a keyboard button. `stats_handler` also shows the top-10 leaderboard and, when `WEBAPP_URL` is set, a Mini App button with `#me?items=..&reports=..&rank=..`.": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755078646
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755183759
+      },
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755484409
+      }
+    ],
+    "10. Create curated data files": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755485558
+      }
+    ],
+    "11. Build the Mini App — shell and i18n": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755751533
+      }
+    ],
+    "12. Build the Mini App — `app.js` and tab router": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794755968207
+      }
+    ],
+    "13. Build the Mini App — Map tab (`map.js`)": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756210068
+      }
+    ],
+    "14. Build the Mini App — Scan and Prices tabs": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794756210562
+      }
+    ],
+    "15. Build the Mini App — Me tab (`me.js`)": [
+      {
+        "executionId": "84ecbe70-07c9-4824-bfb0-0021dd7fdb53",
+        "chatSessionId": "sess_1dec1542-01c3-41a2-b2ac-e90f8e0e315a",
+        "timestamp": 1794757109459
+      }
+    ]
+  }
+}

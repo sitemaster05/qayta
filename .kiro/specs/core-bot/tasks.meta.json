@@ -1,0 +1,389 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "Create `src/qayta/__init__.py` (empty, just `__version__ = \"0.1.0\"`).": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542577442
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542586326
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542600157
+      }
+    ],
+    "Create `src/qayta/__main__.py` with a `main()` stub that prints \"Qayta starting…\" (real wiring happens in Task 7).": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542577860
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542605949
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542677574
+      }
+    ],
+    "Create `tests/__init__.py` (empty).": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578099
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542682387
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542693139
+      }
+    ],
+    "Create `tests/conftest.py` with a `pytest.ini`-style `asyncio_mode = \"auto\"` marker and any shared fixtures.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578366
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542698509
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542722725
+      }
+    ],
+    "Write `pyproject.toml`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578584
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542727821
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542915971
+      }
+    ],
+    "Create `src/qayta/config.py` with a `Settings(BaseSettings)` class covering `TELEGRAM_BOT_TOKEN`, `GEMINI_API_KEY`, `GEMINI_MODEL` (default `\"gemini-2.5-flash\"`), `WEBAPP_URL` (default `\"\"`), `DB_PATH` (default `\"data/qayta.db\"`).": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578706
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542922197
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542948988
+      }
+    ],
+    "Add `model_config = SettingsConfigDict(env_file=\".env\", env_file_encoding=\"utf-8\")`.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578839
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542954398
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542968190
+      }
+    ],
+    "Expose `get_settings() -> Settings` cached with `functools.cache`; nothing is validated at import time.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542578958
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542973432
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542989773
+      }
+    ],
+    "Verify `.env.example` has all variable names with empty values and one-line comments.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579096
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542995133
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793543009064
+      }
+    ],
+    "Tests: importing `qayta.config` works without any environment variables; `get_settings()` raises `ValidationError` when `TELEGRAM_BOT_TOKEN` is missing (use `monkeypatch` and a temporary working directory).": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579258
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793543014609
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793543064672
+      }
+    ],
+    "Create `locales/uz.json`, `locales/ru.json`, `locales/en.json` with the full dotted key set documented in `design.md` (`cmd.*`, `lang.*`, `photo.*`, all 13 `mat.*` names, all `tip.*` keys). Values must be real, translated text — not placeholders. Uzbek uses the Latin script.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579386
+      },
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793543071330
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937487545
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937585530
+      }
+    ],
+    "Create `src/qayta/i18n.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579543
+      },
+      {
+        "executionId": "83a88116-1031-4a5b-90cf-54a3c6e70893",
+        "chatSessionId": "sess_cb061994-03c3-42aa-8be9-de62d47a9010",
+        "timestamp": 1793894791379
+      },
+      {
+        "executionId": "83a88116-1031-4a5b-90cf-54a3c6e70893",
+        "chatSessionId": "sess_cb061994-03c3-42aa-8be9-de62d47a9010",
+        "timestamp": 1793895038271
+      }
+    ],
+    "Create `tests/test_i18n.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579684
+      },
+      {
+        "executionId": "83a88116-1031-4a5b-90cf-54a3c6e70893",
+        "chatSessionId": "sess_cb061994-03c3-42aa-8be9-de62d47a9010",
+        "timestamp": 1793895044555
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937591065
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937712027
+      }
+    ],
+    "Create `src/qayta/materials.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542579928
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937290730
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937481816
+      }
+    ],
+    "Create `tests/test_materials.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580067
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937717329
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937837072
+      }
+    ],
+    "Create `src/qayta/storage.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580189
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937842727
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937893636
+      }
+    ],
+    "Add unit tests in `tests/test_bot.py` (or a separate `tests/test_storage.py`) using an in-memory SQLite DB (`\":memory:\"`):": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580329
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793937899836
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938152041
+      }
+    ],
+    "Create `src/qayta/vision.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580455
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938157996
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938276972
+      }
+    ],
+    "Create `tests/test_vision.py` (inject a fake client, no network):": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580575
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938283336
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938307906
+      }
+    ],
+    "Create `src/qayta/bot.py`:": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580753
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938313934
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938778005
+      }
+    ],
+    "Update `src/qayta/__main__.py`: call `get_settings()` (exit with a clear message on missing variables), `init_db(settings.db_path)`, create one `Vision` and store it in `app.bot_data`, call `register_handlers()`, start polling.": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580881
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938784403
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938834966
+      }
+    ],
+    "Add tests in `tests/test_bot.py` (mock Update and Context with `AsyncMock`):": [
+      {
+        "executionId": "b6fb5494-791d-4dd0-b75a-2943858b1d4b",
+        "chatSessionId": "sess_be13ea9f-4937-4224-9719-7dc80ecce5e0",
+        "timestamp": 1793542580990
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938841590
+      },
+      {
+        "executionId": "ba502c7b-bd17-463c-954e-fa0390c90a32",
+        "chatSessionId": "sess_e1e4011b-c7e4-484d-99fe-517999f09c7c",
+        "timestamp": 1793938882285
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "cmd.start": "👋 Welcome to Qayta!\n\nI can help you figure out what to do with your waste before throwing it away.\n\nSend me a photo of an item and I'll tell you:\n• What material it is\n• Whether it can be recycled in Uzbekistan\n• How to prepare it for recycling\n\nJust send a photo to get started!",
+  "cmd.help": "ℹ️ How to use Qayta:\n\n📸 Send a photo — I'll identify the material and give recycling tips.\n\nCommands:\n/start — Welcome message\n/help — This guide\n/lang — Change language\n\nWhat I can do:\n✅ Identify recyclable materials from photos\n✅ Give preparation tips\n\nWhat I can't do yet:\n❌ Show nearby collection points (coming soon)\n❌ Display the map",
+
+  "lang.prompt": "🌐 Choose your language:",
+  "lang.changed": "✅ Language changed to {lang_name}.",
+
+  "photo.unclear": "🤔 I couldn't clearly identify the material from this photo. Please try again with a clearer, well-lit photo of a single item.",
+  "photo.busy": "⏳ The recognition service is busy right now. Please try again in a minute.",
+  "photo.bad_file": "📎 I can only process image files (JPEG, PNG, or WebP). Please send a photo or an image file.",
+  "photo.recyclable": "♻️ Recyclable in Uzbekistan",
+  "photo.not_recyclable": "🚫 Not commonly recycled in Uzbekistan",
+  "photo.result": "🔍 Material identified: *{name}*\n\n{status}\n\n📋 Preparation tips:\n{tips}",
+
+  "mat.PET_1": "PET Plastic #1",
+  "mat.HDPE_2": "HDPE Plastic #2",
+  "mat.PP_5": "PP Plastic #5",
+  "mat.GLASS": "Glass",
+  "mat.PAPER": "Paper",
+  "mat.CARDBOARD": "Cardboard",
+  "mat.ALUMINIUM": "Aluminium",
+  "mat.STEEL": "Steel",
+  "mat.BATTERIES": "Batteries",
+  "mat.EWASTE": "E-Waste",
+  "mat.TEXTILES": "Textiles",
+  "mat.ORGANIC": "Organic Waste",
+  "mat.MIXED": "Mixed / Non-recyclable",
+
+  "tip.rinse": "Rinse clean",
+  "tip.remove_cap": "Remove the cap",
+  "tip.flatten": "Flatten before disposing",
+  "tip.dry": "Make sure it's dry",
+  "tip.separate_pages": "Separate pages/sheets",
+  "tip.remove_staples": "Remove staples and clips",
+  "tip.discharge": "Tape over the terminals and do not take it apart",
+  "tip.handle_safely": "Handle with care, do not break",
+  "tip.remove_batteries": "Remove batteries first",
+  "tip.keep_whole": "Keep whole, do not crush",
+  "tip.bag_separately": "Bag separately from other waste",
+  "tip.no_preparation": "No special preparation needed",
+
+  "cmd.review": "🛠 Pending reports for review:",
+  "cmd.stats": "📊 Your impact",
+  "cmd.report": "📝 Tap the button below to report a collection point or a price.",
+
+  "map.title": "Recycling map",
+  "map.choose_material": "Choose a material",
+  "map.no_points": "No collection points found nearby. You can add one to OpenStreetMap.",
+  "map.route": "Route",
+  "map.verified_on": "Verified on {date}",
+  "map.no_location": "Location is unavailable. Showing known points without distances.",
+  "map.open_osm": "Open in OpenStreetMap",
+  "map.materials_unknown": "Accepted materials unknown, call first",
+
+  "report.received": "✅ Thank you! Your report was received and will be reviewed.",
+  "report.invalid": "⚠️ The report is incomplete. Please fill in all required fields and try again.",
+  "report.point_form": "Report a collection point",
+  "report.price_form": "Report a price",
+
+  "review.none_pending": "No reports are waiting for review.",
+  "review.approved": "✅ Approved",
+  "review.rejected": "❌ Rejected",
+
+  "stats.result": "📊 Your impact\n\n♻️ Items sorted: {items}\n📝 Approved reports: {reports}\n⭐ Points: {points}\n🏅 Level: {level}",
+  "stats.level": "Level",
+  "stats.items": "Items sorted",
+  "stats.reports": "Approved reports",
+  "stats.points": "Points",
+  "stats.leaderboard": "🏆 Top recyclers",
+  "stats.open_me_button": "👤 Open my page",
+
+  "impact.open_map_button": "🗺 Open Map",
+
+  "level.beginner": "Beginner",
+  "level.recycler": "Recycler",
+  "level.champion": "Champion",
+  "level.legend": "Legend",
+
+  "price.line": "💰 Best price: {price} so'm/kg ({source}, {date})",
+  "nearest.line": "📍 Nearest point: {name}, {distance}",
+
+  "price.outdated": "may be outdated"
+}

@@ -33,3 +33,17 @@ All user-facing text lives in translation files, never hard-coded in handlers.
 - Privacy: photos are processed in memory and never stored; locations are not stored, only the impact counter.
 - Hackathon category: **Frankenstein** — Telegram + multimodal AI vision + OpenStreetMap/Overpass +
   Telegram Mini App map stitched into one helpful app.
+
+## Product direction (updated 2026-11-06)
+Tagline: **"Find out what your waste is worth, and put Uzbekistan's recycling on the map."**
+OpenStreetMap lists only about 40 recycling and scrap points for the whole of Uzbekistan, so Qayta does not only
+read the map, it fills it in.
+
+- **Value first:** after a photo the bot shows the material, the verified price per kg and the nearest buyer.
+- **Honest data:** prices and points come only from verified records with a source and a date. Never invent
+  or estimate a price; when none is known, say so.
+- **Community map:** users report a point or a price; the owner reviews it; approved points are added to
+  OpenStreetMap by a person, with the licence respected.
+- **Mini App:** a polished Telegram Mini App with four tabs (Scan, Map, Prices, Me) in Uzbek, Russian and English.
+- **Motivation without crypto:** points, levels and a leaderboard for sorted items and verified reports.
+  No tokens, wallets, blockchain or money rewards: points have no cash value.

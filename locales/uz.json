@@ -1,0 +1,83 @@
+{
+  "cmd.start": "👋 Qaytaga xush kelibsiz!\n\nMen sizga chiqindi tashlashdan oldin nima qilishni aniqlashda yordam bera olaman.\n\nMenga buyumning rasmini yuboring, men sizga quyidagilarni aytaman:\n• Bu qanday material\n• Uni O'zbekistonda qayta ishlash mumkinmi\n• Uni qayta ishlashga tayyorlash usuli\n\nBoshlash uchun rasm yuboring!",
+  "cmd.help": "ℹ️ Qaytadan foydalanish yo'riqnomasi:\n\n📸 Rasm yuboring — men materialni aniqlab, qayta ishlash bo'yicha maslahat beraman.\n\nBuyruqlar:\n/start — Xush kelibsiz xabari\n/help — Ushbu yo'riqnoma\n/lang — Tilni o'zgartirish\n\nNima qila olaman:\n✅ Rasmlardan qayta ishlanadigan materiallarni aniqlash\n✅ Tayyorlash bo'yicha maslahat berish\n\nHozircha nima qila olmayman:\n❌ Yaqin atrofdagi yig'ish punktlarini ko'rsatish (tez orada)\n❌ Xaritani ko'rsatish",
+
+  "lang.prompt": "🌐 Tilni tanlang:",
+  "lang.changed": "✅ Til {lang_name} ga o'zgartirildi.",
+
+  "photo.unclear": "🤔 Men bu rasmdan materialni aniq tanib ola olmadim. Iltimos, yaxshi yoritilgan, bitta buyumning aniq rasmini qayta yuboring.",
+  "photo.busy": "⏳ Tanib olish xizmati hozir band. Iltimos, bir daqiqadan so'ng qayta urinib ko'ring.",
+  "photo.bad_file": "📎 Men faqat rasm fayllarini (JPEG, PNG yoki WebP) qayta ishlashim mumkin. Iltimos, fotosurat yoki rasm faylini yuboring.",
+  "photo.recyclable": "♻️ O'zbekistonda qayta ishlanadi",
+  "photo.not_recyclable": "🚫 O'zbekistonda odatda qayta ishlanmaydi",
+  "photo.result": "🔍 Material aniqlandi: *{name}*\n\n{status}\n\n📋 Tayyorlash bo'yicha maslahatlar:\n{tips}",
+
+  "mat.PET_1": "PET Plastik #1",
+  "mat.HDPE_2": "HDPE Plastik #2",
+  "mat.PP_5": "PP Plastik #5",
+  "mat.GLASS": "Shisha",
+  "mat.PAPER": "Qog'oz",
+  "mat.CARDBOARD": "Karton",
+  "mat.ALUMINIUM": "Alyuminiy",
+  "mat.STEEL": "Po'lat",
+  "mat.BATTERIES": "Batareyalar",
+  "mat.EWASTE": "Elektron chiqindi",
+  "mat.TEXTILES": "To'qimachilik",
+  "mat.ORGANIC": "Organik chiqindi",
+  "mat.MIXED": "Aralash / Qayta ishlanmaydigan",
+
+  "tip.rinse": "Yaxshilab yuvib tozalang",
+  "tip.remove_cap": "Qopqog'ini olib tashlang",
+  "tip.flatten": "Tashlashdan oldin yassitib qo'ying",
+  "tip.dry": "Quruq ekanligiga ishonch hosil qiling",
+  "tip.separate_pages": "Varaqlarni ajratib oling",
+  "tip.remove_staples": "Qisqichlar va skrepkalarni olib tashlang",
+  "tip.discharge": "Kontaktlarini izolyatsion lenta bilan yoping, qismlarga ajratmang",
+  "tip.handle_safely": "Ehtiyotkorlik bilan muomala qiling, sindirmang",
+  "tip.remove_batteries": "Avval batareyalarni olib tashlang",
+  "tip.keep_whole": "Butunligini saqlang, ezib qo'ymang",
+  "tip.bag_separately": "Boshqa chiqindilardan alohida paketga soling",
+  "tip.no_preparation": "Maxsus tayyorgarlik talab etilmaydi",
+
+  "cmd.review": "🛠 Ko'rib chiqishni kutayotgan xabarlar:",
+  "cmd.stats": "📊 Sizning hissangiz",
+  "cmd.report": "📝 Qabul punkti yoki narx haqida xabar berish uchun quyidagi tugmani bosing.",
+
+  "map.title": "Qayta ishlash xaritasi",
+  "map.choose_material": "Materialni tanlang",
+  "map.no_points": "Yaqin atrofda qabul punktlari topilmadi. Uni OpenStreetMap'ga qo'shishingiz mumkin.",
+  "map.route": "Marshrut",
+  "map.verified_on": "{date} sanasida tekshirilgan",
+  "map.no_location": "Joylashuv aniqlanmadi. Ma'lum punktlar masofasiz ko'rsatilmoqda.",
+  "map.open_osm": "OpenStreetMap'da ochish",
+  "map.materials_unknown": "Qabul qilinadigan materiallar noma'lum, avval qo'ng'iroq qiling",
+
+  "report.received": "✅ Rahmat! Xabaringiz qabul qilindi va ko'rib chiqiladi.",
+  "report.invalid": "⚠️ Xabar to'liq emas. Barcha majburiy maydonlarni to'ldirib, qayta urinib ko'ring.",
+  "report.point_form": "Qabul punkti haqida xabar berish",
+  "report.price_form": "Narx haqida xabar berish",
+
+  "review.none_pending": "Ko'rib chiqishni kutayotgan xabarlar yo'q.",
+  "review.approved": "✅ Tasdiqlandi",
+  "review.rejected": "❌ Rad etildi",
+
+  "stats.result": "📊 Sizning hissangiz\n\n♻️ Saralangan buyumlar: {items}\n📝 Tasdiqlangan xabarlar: {reports}\n⭐ Ballar: {points}\n🏅 Daraja: {level}",
+  "stats.level": "Daraja",
+  "stats.items": "Saralangan buyumlar",
+  "stats.reports": "Tasdiqlangan xabarlar",
+  "stats.points": "Ballar",
+  "stats.leaderboard": "🏆 Eng yaxshi qayta ishlovchilar",
+  "stats.open_me_button": "👤 Mening sahifam",
+
+  "impact.open_map_button": "🗺 Xaritani ochish",
+
+  "level.beginner": "Boshlovchi",
+  "level.recycler": "Qayta ishlovchi",
+  "level.champion": "Chempion",
+  "level.legend": "Afsona",
+
+  "price.line": "💰 Eng yaxshi narx: {price} so'm/kg ({source}, {date})",
+  "nearest.line": "📍 Eng yaqin punkt: {name}, {distance}",
+
+  "price.outdated": "eskirgan bo'lishi mumkin"
+}

@@ -1,0 +1,70 @@
+# Qayta — Recycle smarter in Uzbekistan
+
+*Qayta* means "again / once more" in Uzbek. Qayta is a Telegram bot (and a Telegram Mini App map) that
+helps residents of Uzbekistan and Central Asia answer two questions before throwing something away:
+
+1. **Can this be recycled, and how do I prepare it?** — send a photo, get an instant answer.
+2. **Where can I hand it in?** — share your location and see the nearest collection points from
+   OpenStreetMap.
+
+---
+
+## Quick start
+
+```bash
+cp .env.example .env          # fill in TELEGRAM_BOT_TOKEN and GEMINI_API_KEY
+pip install -e ".[dev]"
+python -m qayta
+```
+
+---
+
+## Configuration
+
+See `.env.example` for all environment variables.
+
+| Variable | Required | Default | Description |
+|---|---|---|---|
+| `TELEGRAM_BOT_TOKEN` | ✅ | — | Bot token from @BotFather |
+| `GEMINI_API_KEY` | ✅ | — | Google AI Studio API key |
+| `GEMINI_MODEL` | | `gemini-flash-lite-latest` | Gemini model name |
+| `WEBAPP_URL` | | *(empty)* | GitHub Pages URL for the Mini App map |
+| `DB_PATH` | | `data/qayta.db` | SQLite database path |
+
+---
+
+## Recyclability in Uzbekistan (`recyclable_uz`)
+
+Each material entry in `src/qayta/materials.py` carries a `recyclable_uz` boolean flag.
+**This is general guidance only, based on what collection points in Tashkent, Samarkand, and
+Ohangaron commonly accept. It is not a legal or regulatory classification.**
+Availability varies by city, district, and operator — always confirm with your local recycling
+point before making a trip.
+
+---
+
+## Running tests
+
+```bash
+pytest
+ruff check src/ tests/
+```
+
+Tests run fully offline; all external services (Telegram, Gemini, Overpass) are mocked.
+
+---
+
+## Project structure
+
+```
+src/qayta/       — bot package
+locales/         — uz.json, ru.json, en.json (all user-facing text)
+webapp/          — Telegram Mini App map (static, GitHub Pages)
+tests/           — mirrors src/qayta/ module names
+```
+
+---
+
+## Attribution
+
+Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).

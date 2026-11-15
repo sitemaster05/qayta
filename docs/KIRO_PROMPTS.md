@@ -61,3 +61,25 @@ Kiro по очереди покажет `requirements.md`, `design.md`, `tasks.m
 
 ## Что делать, если кредиты кончаются
 Пиши Claude: он подскажет, какие задачи можно объединить. Не запускай задачи «на всякий случай».
+
+## Этап 6. Новая спецификация: Mini App, цены и карта
+Заменяет этапы 3–5. Открой проект по адресу `D:\qayta`, новый чат, режим **Spec**, вставь:
+
+> Create a spec named `mini-app` following the updated product direction in the steering docs. Scope:
+> (1) `webapp/`: a static Telegram Mini App (HTML, CSS, vanilla JS, Leaflet from a CDN, no build step, published with
+> GitHub Pages) with a bottom tab bar: Scan, Map, Prices, Me. It uses Telegram theme parameters, has a polished dark
+> green design with clear large buttons, works at 375 px, and supports uz, ru and en with a language switch.
+> (2) Data: `webapp/data/points.json`, a curated list of verified points (name, lat, lon, materials, phone, hours,
+> source, verified date) and `webapp/data/prices.json` (point id, material, price in so'm per kg, source, date). The
+> app merges curated points with OpenStreetMap results from Overpass and shows a "verified on <date>" label.
+> A price is never shown without a source and date; if none exists show "price unknown".
+> (3) Map tab: user location, nearest points that accept the chosen material, a popup with price, phone and route link.
+> (4) Report flow: from the Mini App a user reports a new point or price; `Telegram.WebApp.sendData` delivers it to the
+> bot, which stores it as `pending` in SQLite. A `/review` command restricted to `ADMIN_USER_ID` approves or rejects
+> reports and exports approved ones as JSON.
+> (5) Bot: after a photo result add the best verified price and nearest point, plus a button that opens the Mini App
+> on the Map tab for that material. Add a persistent menu button that opens the Mini App.
+> (6) Me tab and `/stats`: points, level and a leaderboard from items sorted and approved reports. Points have no cash
+> value; store only a hashed user id; no tokens, wallets or blockchain.
+> Add a startup smoke test and property-based tests for distance sorting, price lookup and the points maths.
+> Mock Telegram, Gemini and Overpass in tests. Do not put any sample prices in the data files; leave the lists empty.
