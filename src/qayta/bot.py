@@ -73,11 +73,42 @@ def _confidence_band(confidence: float) -> str:
 # ---------------------------------------------------------------------------
 
 
+LANG_PICKER_PROMPT = "🌐 Tilni tanlang · Выберите язык · Choose your language"
+
+
+def _lang_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🇺🇿 O'zbek", callback_data="lang_uz"),
+                InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru"),
+                InlineKeyboardButton("🇬🇧 English", callback_data="lang_en"),
+            ]
+        ]
+    )
+
+
+def guess_lang(language_code: object) -> str:
+    """Map Telegram's ``language_code`` to uz/ru/en; anything else falls back to uz."""
+    if isinstance(language_code, str):
+        base = language_code.split("-")[0].lower()
+        if base in _LANG_NAMES:
+            return base
+    return "uz"
+
+
 async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Reply to /start with the welcome message in the user's language."""
-    user_id = update.effective_user.id  # type: ignore[union-attr]
+    """Reply to /start in the user's language, then offer the three-language picker.
+
+    A first-time user gets the language of their Telegram app (uz, ru or en) instead of always uz.
+    """
+    user = update.effective_user
+    user_id = user.id  # type: ignore[union-attr]
+    if not storage.has_lang(user_id):
+        storage.set_lang(user_id, guess_lang(getattr(user, "language_code", None)))
     lang = get_user_lang(user_id)
     await update.message.reply_text(t("cmd.start", lang))  # type: ignore[union-attr]
+    await update.message.reply_text(LANG_PICKER_PROMPT, reply_markup=_lang_keyboard())  # type: ignore[union-attr]
 
 
 async def help_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -91,17 +122,7 @@ async def lang_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Reply to /lang with an inline keyboard for language selection."""
     user_id = update.effective_user.id  # type: ignore[union-attr]
     lang = get_user_lang(user_id)
-
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("🇺🇿 O'zbek", callback_data="lang_uz"),
-                InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru"),
-                InlineKeyboardButton("🇬🇧 English", callback_data="lang_en"),
-            ]
-        ]
-    )
-    await update.message.reply_text(t("lang.prompt", lang), reply_markup=keyboard)  # type: ignore[union-attr]
+    await update.message.reply_text(t("lang.prompt", lang), reply_markup=_lang_keyboard())  # type: ignore[union-attr]
 
 
 async def lang_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

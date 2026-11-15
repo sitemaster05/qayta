@@ -94,6 +94,13 @@ def get_lang(user_id: int) -> str:
     return row[0] if row else "uz"
 
 
+def has_lang(user_id: int) -> bool:
+    """Return True when *user_id* already has a stored language."""
+    conn = _require_conn()
+    row = conn.execute("SELECT 1 FROM user_language WHERE user_id = ?", (user_id,)).fetchone()
+    return row is not None
+
+
 def set_lang(user_id: int, lang: str) -> None:
     """Upsert the language preference for *user_id*."""
     conn = _require_conn()

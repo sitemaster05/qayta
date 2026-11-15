@@ -39,3 +39,9 @@ only works from a keyboard button, a static site cannot read SQLite, browsers fo
 points lack material tags, optional config, keyed hashing, daily point cap, stale prices, location fallback.
 - Kiro's first `tasks.md` for `mini-app` did not follow the corrections, so the affected tasks were rewritten by hand
   and the test tasks were made required rather than optional.
+
+## 2026-11-15: language choice (hand change after live test)
+Live test: the bot answered only in Uzbek, because a new user defaulted to `uz` and the picker hid behind `/lang`.
+Changed by hand: `/start` stores the Telegram `language_code` (uz/ru/en, otherwise uz) on the first visit and
+always shows the three-language buttons; the command menu is published in uz, ru and en (`set_my_commands`).
+Added `storage.has_lang` and tests (164 pass).

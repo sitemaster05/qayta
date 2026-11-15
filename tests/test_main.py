@@ -72,7 +72,7 @@ class _FakeSettings:
 
 def _fake_app(error: Exception | None = None) -> SimpleNamespace:
     set_button = AsyncMock(side_effect=error)
-    return SimpleNamespace(bot=SimpleNamespace(set_chat_menu_button=set_button))
+    return SimpleNamespace(bot=SimpleNamespace(set_chat_menu_button=set_button, set_my_commands=AsyncMock()))
 
 
 async def test_post_init_sets_menu_button_for_https(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -100,3 +100,13 @@ async def test_post_init_swallows_telegram_error(
     app = _fake_app(TelegramError("boom"))
     await entry.post_init(app)  # type: ignore[arg-type]
     assert "menu button" in caplog.text
+
+
+async def test_post_init_sets_commands_in_three_languages(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(entry, "get_settings", lambda: _FakeSettings(""))
+    app = _fake_app()
+    await entry.post_init(app)  # type: ignore[arg-type]
+    codes = {c.kwargs.get("language_code") for c in app.bot.set_my_commands.await_args_list}
+    assert codes == {None, "uz", "ru", "en"}
+    names = [cmd.command for cmd in app.bot.set_my_commands.await_args_list[0].args[0]]
+    assert "lang" in names and "start" in names

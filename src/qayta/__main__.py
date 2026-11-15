@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 from pydantic import ValidationError
-from telegram import MenuButtonWebApp, Update, WebAppInfo
+from telegram import BotCommand, MenuButtonWebApp, Update, WebAppInfo
 from telegram.error import TelegramError
 from telegram.ext import Application, ApplicationBuilder
 
@@ -74,8 +74,31 @@ def run_check() -> int:
     return 0
 
 
+BOT_COMMANDS: dict[str, list[tuple[str, str]]] = {
+    "uz": [("start", "Boshlash"), ("lang", "Tilni o'zgartirish"), ("stats", "Mening hissam"),
+           ("report", "Punkt yoki narx qo'shish"), ("help", "Yordam")],
+    "ru": [("start", "Начать"), ("lang", "Сменить язык"), ("stats", "Мой вклад"),
+           ("report", "Добавить пункт или цену"), ("help", "Помощь")],
+    "en": [("start", "Start"), ("lang", "Change language"), ("stats", "My impact"),
+           ("report", "Add a point or price"), ("help", "Help")],
+}
+
+
+async def set_commands(app: Application) -> None:
+    """Publish the command list in uz (default), ru and en; never stop the bot."""
+    try:
+        for lang, commands in BOT_COMMANDS.items():
+            items = [BotCommand(name, description) for name, description in commands]
+            if lang == "uz":
+                await app.bot.set_my_commands(items)
+            await app.bot.set_my_commands(items, language_code=lang)
+    except TelegramError as exc:
+        logger.warning("Could not set bot commands: %s", type(exc).__name__)
+
+
 async def post_init(app: Application) -> None:
-    """Set the chat menu button to the Mini App when WEBAPP_URL is https; never stop the bot."""
+    """Set commands, and the Mini App menu button when WEBAPP_URL is https; never stop the bot."""
+    await set_commands(app)
     webapp_url = get_settings().webapp_url
     if not webapp_url.startswith("https://"):
         return

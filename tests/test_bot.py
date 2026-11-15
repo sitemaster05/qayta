@@ -98,20 +98,36 @@ async def test_start_handler_replies_in_uz():
     update = _make_update(user_id=1)
     ctx = _make_context()
     await start_handler(update, ctx)
-    update.message.reply_text.assert_awaited_once()
-    text = update.message.reply_text.call_args[0][0]
+    assert update.message.reply_text.await_count == 2
+    text = update.message.reply_text.await_args_list[0].args[0]
     # The Uzbek welcome message contains "Qayta"
     assert "Qayta" in text
+    picker = update.message.reply_text.await_args_list[1]
+    data = [b.callback_data for b in picker.kwargs["reply_markup"].inline_keyboard[0]]
+    assert data == ["lang_uz", "lang_ru", "lang_en"]
 
 
 @pytest.mark.asyncio
 async def test_start_handler_replies_in_stored_lang():
     storage_mod.set_lang(7, "ru")
     update = _make_update(user_id=7)
+    update.effective_user.language_code = "en"
     ctx = _make_context()
     await start_handler(update, ctx)
-    text = update.message.reply_text.call_args[0][0]
-    assert "Qayta" in text  # both uz and ru messages contain "Qayta"
+    text = update.message.reply_text.await_args_list[0].args[0]
+    assert "Добро пожаловать" in text
+    assert storage_mod.get_lang(7) == "ru"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("code", "expected"), [("ru", "ru"), ("en-US", "en"), ("uz", "uz"), ("de", "uz"), (None, "uz")]
+)
+async def test_start_handler_first_visit_uses_telegram_language(code, expected):
+    update = _make_update(user_id=4242)
+    update.effective_user.language_code = code
+    await start_handler(update, _make_context())
+    assert storage_mod.get_lang(4242) == expected
 
 
 @pytest.mark.asyncio
