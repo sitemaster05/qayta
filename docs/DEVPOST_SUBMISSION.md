@@ -16,6 +16,8 @@ Frankenstein
 - Working app: https://t.me/AICiroPRobot (Telegram bot) and https://sitemaster05.github.io/qayta/ (Mini App)
 - Demo video: https://youtu.be/yI6kezZ6bk8
 - Devpost: https://devpost.com/software/qayta (submitted 2026-11-18)
+- Social Blitz post: https://www.instagram.com/p/Df4q0AvDEWo/
+- Blog post: https://telegra.ph/How-I-built-a-recycling-bot-for-Uzbekistan-with-Kiro-specs-11-18 (text in docs/BLOG_POST.md)
 
 ## Testing instructions for judges
 Open https://t.me/AICiroPRobot in Telegram and press Start. Pick a language (O'zbek, Русский, English).
