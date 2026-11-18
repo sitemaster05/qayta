@@ -6,6 +6,13 @@ helps residents of Uzbekistan and Central Asia answer two questions before throw
 1. **Can this be recycled, and how do I prepare it?** — send a photo, get an instant answer.
 2. **Where can I hand it in?** — share your location and see the nearest collection points from
    OpenStreetMap.
+3. **What do buyers pay?** — real per-kg prices from public buy ads, each with its source and date.
+
+**Try it:** bot [@AICiroPRobot](https://t.me/AICiroPRobot) · Mini App <https://sitemaster05.github.io/qayta/>
+(opens best inside Telegram) · Languages: O'zbek, Русский, English.
+
+**Built with Kiro for Kiroween 2026.** Specs, steering and task history are in [`.kiro/`](.kiro/). How we used
+Kiro, what worked and what we fixed by hand: [`docs/KIRO_WRITEUP.md`](docs/KIRO_WRITEUP.md).
 
 ---
 

@@ -45,3 +45,16 @@ Live test: the bot answered only in Uzbek, because a new user defaulted to `uz` 
 Changed by hand: `/start` stores the Telegram `language_code` (uz/ru/en, otherwise uz) on the first visit and
 always shows the three-language buttons; the command menu is published in uz, ru and en (`set_my_commands`).
 Added `storage.has_lang` and tests (164 pass).
+
+## 2026-11-13 – 2026-11-15: mini-app implementation run (54/54 tasks, 158 tests)
+- Kiro ran "Run all tasks" in Autopilot. It paused once at task 2.2: a sub-agent ran pytest with the global
+  Python, did not find `hypothesis` and asked for `pip install`. The project `.venv` already had everything.
+  Fix by hand: steering `tech.md` now says "use `.venv\Scripts\python.exe`, never `pip install`, do not stop to ask",
+  and user-level `permissions.yaml` allow rules cover the project's test and file commands (deny rules for
+  `.env`, `git push`, recursive deletes). After that Kiro finished the remaining 47 tasks without prompts.
+- Hand review after the run: tests and ruff pass, Mini App checked in a 375 px browser viewport in three languages.
+
+## 2026-11-18: first real prices
+`webapp/data/prices.json` filled with 9 prices from public OLX.uz buy ads in Tashkent (22 Oct – 15 Nov 2026):
+white paper, books and newspapers, cardboard, aluminium frames. Each record names the ad ID and date; ranges keep
+the lower bound. No PET, glass or steel price had a clear per-kg figure, so those stay empty rather than guessed.
