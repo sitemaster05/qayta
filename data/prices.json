@@ -1,0 +1,65 @@
+[
+  {
+    "point_id": "OLX · Олмазор · белая A4 (3000–4000)",
+    "material": "PAPER",
+    "price_som_per_kg": 3000,
+    "source": "OLX.uz ID2Dalb",
+    "date": "2026-11-15"
+  },
+  {
+    "point_id": "OLX · Олмазор · книги, журналы, газеты (2000–2500)",
+    "material": "PAPER",
+    "price_som_per_kg": 2000,
+    "source": "OLX.uz ID2Dalb",
+    "date": "2026-11-15"
+  },
+  {
+    "point_id": "OLX · Олмазор (1800–2200)",
+    "material": "CARDBOARD",
+    "price_som_per_kg": 1800,
+    "source": "OLX.uz ID2Dalb",
+    "date": "2026-11-15"
+  },
+  {
+    "point_id": "OLX · Чиланзар · белая бумага (3000–4000)",
+    "material": "PAPER",
+    "price_som_per_kg": 3000,
+    "source": "OLX.uz ID4wb0N",
+    "date": "2026-11-15"
+  },
+  {
+    "point_id": "OLX · Чиланзар · серая бумага (2000–2500)",
+    "material": "PAPER",
+    "price_som_per_kg": 2000,
+    "source": "OLX.uz ID4wb0N",
+    "date": "2026-11-15"
+  },
+  {
+    "point_id": "OLX · Шайхантахур (1300–1700)",
+    "material": "CARDBOARD",
+    "price_som_per_kg": 1300,
+    "source": "OLX.uz ID4myXR",
+    "date": "2026-11-12"
+  },
+  {
+    "point_id": "OLX · Чиланзар · белая бумага",
+    "material": "PAPER",
+    "price_som_per_kg": 3000,
+    "source": "OLX.uz ID2dClK",
+    "date": "2026-10-22"
+  },
+  {
+    "point_id": "OLX · Чиланзар · книги",
+    "material": "PAPER",
+    "price_som_per_kg": 1100,
+    "source": "OLX.uz ID2dClK",
+    "date": "2026-10-22"
+  },
+  {
+    "point_id": "OLX · Яшнобод · алюминиевые рамы",
+    "material": "ALUMINIUM",
+    "price_som_per_kg": 20000,
+    "source": "OLX.uz ID4wIL3",
+    "date": "2026-11-13"
+  }
+]
