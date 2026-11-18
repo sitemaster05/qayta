@@ -8,7 +8,7 @@ helps residents of Uzbekistan and Central Asia answer two questions before throw
    OpenStreetMap.
 3. **What do buyers pay?** — real per-kg prices from public buy ads, each with its source and date.
 
-**Try it:** bot [@AICiroPRobot](https://t.me/AICiroPRobot) · Mini App <https://sitemaster05.github.io/qayta/>
+**Try it:** bot [@AICiroPRobot](https://t.me/AICiroPRobot) · Mini App <https://sitemaster05.github.io/qayta/> · Demo video <https://youtu.be/yI6kezZ6bk8>
 (opens best inside Telegram) · Languages: O'zbek, Русский, English.
 
 **Built with Kiro for Kiroween 2026.** Specs, steering and task history are in [`.kiro/`](.kiro/). How we used

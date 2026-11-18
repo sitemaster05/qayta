@@ -14,7 +14,8 @@ Frankenstein
 ## Links
 - GitHub (public, MIT): https://github.com/sitemaster05/qayta
 - Working app: https://t.me/AICiroPRobot (Telegram bot) and https://sitemaster05.github.io/qayta/ (Mini App)
-- Demo video: (YouTube link after upload)
+- Demo video: https://youtu.be/yI6kezZ6bk8
+- Devpost: https://devpost.com/software/qayta (submitted 2026-11-18)
 
 ## Testing instructions for judges
 Open https://t.me/AICiroPRobot in Telegram and press Start. Pick a language (O'zbek, Русский, English).
