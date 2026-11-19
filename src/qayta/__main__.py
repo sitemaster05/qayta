@@ -166,18 +166,64 @@ def webhook_secret(token: str) -> str:
     return hashlib.sha256(f"qayta-webhook:{token}".encode()).hexdigest()[:48]
 
 
+def make_web_app(app: Application, secret: str):
+    """Tornado app: GET / answers "ok" for uptime pings, POST /telegram queues verified Telegram updates."""
+    import tornado.web
+
+    class Health(tornado.web.RequestHandler):
+        def get(self) -> None:
+            self.write("ok")
+
+        def head(self) -> None:
+            self.set_status(200)
+
+    class Hook(tornado.web.RequestHandler):
+        async def post(self) -> None:
+            if self.request.headers.get("X-Telegram-Bot-Api-Secret-Token") != secret:
+                self.set_status(403)
+                return
+            try:
+                data = json.loads(self.request.body)
+            except ValueError:
+                self.set_status(400)
+                return
+            await app.update_queue.put(Update.de_json(data, app.bot))
+            self.set_status(200)
+
+    return tornado.web.Application([(r"/", Health), (rf"/{WEBHOOK_PATH}", Hook)])
+
+
+async def serve_webhook(app: Application, webhook_url: str, port: int, secret: str) -> None:
+    """Start the bot, register the webhook and serve until the process is stopped."""
+    import asyncio
+
+    server = make_web_app(app, secret).listen(port, address="0.0.0.0")
+    async with app:
+        await post_init(app)
+        await app.start()
+        await app.bot.set_webhook(url=webhook_url, secret_token=secret, allowed_updates=Update.ALL_TYPES)
+        logger.info("Webhook registered; serving on port %d", port)
+        try:
+            await asyncio.Event().wait()
+        finally:
+            await app.stop()
+            server.stop()
+
+
 def run(app: Application, settings) -> None:
     """Run in webhook mode when WEBHOOK_URL (or Render's RENDER_EXTERNAL_URL) is https, else long polling."""
+    import asyncio
+
     base = (settings.webhook_url or os.environ.get("RENDER_EXTERNAL_URL", "")).rstrip("/")
     if base.startswith("https://"):
         logger.info("Webhook mode on port %d", settings.port)
-        app.run_webhook(
-            listen="0.0.0.0",
-            port=settings.port,
-            url_path=WEBHOOK_PATH,
-            webhook_url=f"{base}/{WEBHOOK_PATH}",
-            secret_token=webhook_secret(settings.telegram_bot_token),
-            allowed_updates=Update.ALL_TYPES,
+        asyncio.run(
+            serve_webhook(
+                app,
+                webhook_url=f"{base}/{WEBHOOK_PATH}",
+                port=settings.port,
+                secret=webhook_secret(settings.telegram_bot_token),
+            )
         )
     else:
         app.run_polling(allowed_updates=Update.ALL_TYPES)

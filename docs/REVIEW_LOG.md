@@ -64,3 +64,9 @@ The bot ran on the author's computer, but the project must stay testable until j
 Added by hand: webhook mode (`run()` in `__main__.py`, `python-telegram-bot[webhooks]`, secret token derived from the
 bot token), `render.yaml` for a free Render web service, and a `keep-alive` GitHub Action. Long polling stays the
 default when no https URL is set. 169 tests pass.
+
+## 2026-11-19: health page for uptime pings
+GitHub's scheduled Actions ran only about once an hour, so the free Render service still fell asleep. An external
+cron (cron-job.org) now pings the service every 10 minutes. PTB's built-in webhook server answered 404 on `/`, which
+such monitors treat as a failure, so `run()` now serves its own small tornado app: `GET /` returns `ok`, and
+`POST /telegram` checks the secret header (403 otherwise) before queuing the update. 170 tests pass.

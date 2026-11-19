@@ -60,8 +60,9 @@ The bot runs in **webhook mode** when it has a public https URL, and in long-pol
 3. Render sets `PORT` and `RENDER_EXTERNAL_URL`; the bot registers its webhook at `<url>/telegram` with a secret
    token derived from the bot token. Stop any locally running copy, because Telegram allows either a webhook
    or polling, not both.
-4. Free Render services sleep after 15 idle minutes. The `keep-alive` GitHub Action pings the service every
-   10 minutes once the repository variable `QAYTA_BOT_URL` is set to the Render URL.
+4. Free Render services sleep after 15 idle minutes. `GET /` answers `ok`, so any uptime monitor can keep the
+   service awake: we use a free [cron-job.org](https://cron-job.org) job every 10 minutes. The `keep-alive` GitHub
+   Action (repository variable `QAYTA_BOT_URL`) is a backup; GitHub runs scheduled jobs only about hourly.
 
 The free filesystem is ephemeral: SQLite stats reset when Render restarts the service.
 

@@ -122,29 +122,71 @@ class _RunSettings:
 def _run_app() -> SimpleNamespace:
     from unittest.mock import MagicMock
 
-    return SimpleNamespace(run_webhook=MagicMock(), run_polling=MagicMock())
+    return SimpleNamespace(run_polling=MagicMock())
 
 
-def test_run_uses_webhook_for_https_url() -> None:
+@pytest.fixture
+def served(monkeypatch: pytest.MonkeyPatch) -> dict:
+    """Replace serve_webhook with a recorder so run() never opens a socket."""
+    calls: dict = {}
+
+    async def fake(app, **kwargs):
+        calls.update(kwargs)
+
+    monkeypatch.setattr(entry, "serve_webhook", fake)
+    return calls
+
+
+def test_run_uses_webhook_for_https_url(served: dict, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("RENDER_EXTERNAL_URL", raising=False)
     app = _run_app()
     entry.run(app, _RunSettings("https://qayta.example.com/"))  # type: ignore[arg-type]
     app.run_polling.assert_not_called()
-    kwargs = app.run_webhook.call_args.kwargs
-    assert kwargs["webhook_url"] == "https://qayta.example.com/telegram"
-    assert kwargs["url_path"] == "telegram"
-    assert kwargs["port"] == 10000
-    assert kwargs["listen"] == "0.0.0.0"
-    assert kwargs["secret_token"] == entry.webhook_secret("123:abc")
-    assert "abc" not in kwargs["secret_token"]
+    assert served["webhook_url"] == "https://qayta.example.com/telegram"
+    assert served["port"] == 10000
+    assert served["secret"] == entry.webhook_secret("123:abc")
+    assert "abc" not in served["secret"]
 
 
 @pytest.mark.parametrize("url", ["", "http://qayta.example.com"])
-def test_run_falls_back_to_polling(url: str, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_run_falls_back_to_polling(url: str, served: dict, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("RENDER_EXTERNAL_URL", raising=False)
     app = _run_app()
     entry.run(app, _RunSettings(url))  # type: ignore[arg-type]
-    app.run_webhook.assert_not_called()
+    assert served == {}
     app.run_polling.assert_called_once()
+
+
+async def test_web_app_health_and_secret_check() -> None:
+    import asyncio
+
+    import tornado.httpclient
+    import tornado.httpserver
+    import tornado.testing
+
+    queue: asyncio.Queue = asyncio.Queue()
+    app = SimpleNamespace(update_queue=queue, bot=None)
+    sock, port = tornado.testing.bind_unused_port()
+    server = tornado.httpserver.HTTPServer(entry.make_web_app(app, "s3cret"))  # type: ignore[arg-type]
+    server.add_sockets([sock])
+    client = tornado.httpclient.AsyncHTTPClient()
+    base = f"http://127.0.0.1:{port}"
+    try:
+        ok = await client.fetch(f"{base}/")
+        assert ok.code == 200 and ok.body == b"ok"
+        bad = await client.fetch(f"{base}/telegram", method="POST", body="{}", raise_error=False)
+        assert bad.code == 403 and queue.empty()
+        good = await client.fetch(
+            f"{base}/telegram",
+            method="POST",
+            body='{"update_id": 7}',
+            headers={"X-Telegram-Bot-Api-Secret-Token": "s3cret"},
+            raise_error=False,
+        )
+        assert good.code == 200
+        assert (await queue.get()).update_id == 7
+    finally:
+        server.stop()
 
 
 def test_webhook_secret_is_stable_and_valid() -> None:
@@ -155,8 +197,8 @@ def test_webhook_secret_is_stable_and_valid() -> None:
     assert re.fullmatch(r"[A-Za-z0-9_-]{1,256}", s)
 
 
-def test_run_uses_render_external_url(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_run_uses_render_external_url(served: dict, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("RENDER_EXTERNAL_URL", "https://qayta-bot.onrender.com")
     app = _run_app()
     entry.run(app, _RunSettings(""))  # type: ignore[arg-type]
-    assert app.run_webhook.call_args.kwargs["webhook_url"] == "https://qayta-bot.onrender.com/telegram"
+    assert served["webhook_url"] == "https://qayta-bot.onrender.com/telegram"
