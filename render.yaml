@@ -5,7 +5,7 @@ services:
     name: qayta-bot
     runtime: python
     plan: free
-    buildCommand: pip install .
+    buildCommand: pip install -e .
     startCommand: python -m qayta
     envVars:
       - key: PYTHON_VERSION
