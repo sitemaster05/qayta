@@ -5,8 +5,10 @@ Run with:
 """
 
 import argparse
+import hashlib
 import json
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -150,10 +152,35 @@ def main(argv: list[str] | None = None) -> None:
     bot.register_handlers(app)
 
     # ------------------------------------------------------------------
-    # 6. Start long-polling
+    # 6. Start: webhook on a host with a public https URL, otherwise long polling
     # ------------------------------------------------------------------
     logger.info("Qayta bot starting — model=%s db=%s", settings.gemini_model, settings.db_path)
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    run(app, settings)
+
+
+WEBHOOK_PATH = "telegram"
+
+
+def webhook_secret(token: str) -> str:
+    """Derive the Telegram webhook secret from the bot token, so no extra variable is needed."""
+    return hashlib.sha256(f"qayta-webhook:{token}".encode()).hexdigest()[:48]
+
+
+def run(app: Application, settings) -> None:
+    """Run in webhook mode when WEBHOOK_URL (or Render's RENDER_EXTERNAL_URL) is https, else long polling."""
+    base = (settings.webhook_url or os.environ.get("RENDER_EXTERNAL_URL", "")).rstrip("/")
+    if base.startswith("https://"):
+        logger.info("Webhook mode on port %d", settings.port)
+        app.run_webhook(
+            listen="0.0.0.0",
+            port=settings.port,
+            url_path=WEBHOOK_PATH,
+            webhook_url=f"{base}/{WEBHOOK_PATH}",
+            secret_token=webhook_secret(settings.telegram_bot_token),
+            allowed_updates=Update.ALL_TYPES,
+        )
+    else:
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":

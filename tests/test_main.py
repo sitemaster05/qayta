@@ -110,3 +110,53 @@ async def test_post_init_sets_commands_in_three_languages(monkeypatch: pytest.Mo
     assert codes == {None, "uz", "ru", "en"}
     names = [cmd.command for cmd in app.bot.set_my_commands.await_args_list[0].args[0]]
     assert "lang" in names and "start" in names
+
+
+class _RunSettings:
+    def __init__(self, webhook_url: str, port: int = 10000, token: str = "123:abc") -> None:
+        self.webhook_url = webhook_url
+        self.port = port
+        self.telegram_bot_token = token
+
+
+def _run_app() -> SimpleNamespace:
+    from unittest.mock import MagicMock
+
+    return SimpleNamespace(run_webhook=MagicMock(), run_polling=MagicMock())
+
+
+def test_run_uses_webhook_for_https_url() -> None:
+    app = _run_app()
+    entry.run(app, _RunSettings("https://qayta.example.com/"))  # type: ignore[arg-type]
+    app.run_polling.assert_not_called()
+    kwargs = app.run_webhook.call_args.kwargs
+    assert kwargs["webhook_url"] == "https://qayta.example.com/telegram"
+    assert kwargs["url_path"] == "telegram"
+    assert kwargs["port"] == 10000
+    assert kwargs["listen"] == "0.0.0.0"
+    assert kwargs["secret_token"] == entry.webhook_secret("123:abc")
+    assert "abc" not in kwargs["secret_token"]
+
+
+@pytest.mark.parametrize("url", ["", "http://qayta.example.com"])
+def test_run_falls_back_to_polling(url: str, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("RENDER_EXTERNAL_URL", raising=False)
+    app = _run_app()
+    entry.run(app, _RunSettings(url))  # type: ignore[arg-type]
+    app.run_webhook.assert_not_called()
+    app.run_polling.assert_called_once()
+
+
+def test_webhook_secret_is_stable_and_valid() -> None:
+    import re
+
+    s = entry.webhook_secret("123:abc")
+    assert s == entry.webhook_secret("123:abc") and s != entry.webhook_secret("123:abd")
+    assert re.fullmatch(r"[A-Za-z0-9_-]{1,256}", s)
+
+
+def test_run_uses_render_external_url(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("RENDER_EXTERNAL_URL", "https://qayta-bot.onrender.com")
+    app = _run_app()
+    entry.run(app, _RunSettings(""))  # type: ignore[arg-type]
+    assert app.run_webhook.call_args.kwargs["webhook_url"] == "https://qayta-bot.onrender.com/telegram"

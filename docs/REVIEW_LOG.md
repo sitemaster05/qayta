@@ -58,3 +58,9 @@ Added `storage.has_lang` and tests (164 pass).
 `webapp/data/prices.json` filled with 9 prices from public OLX.uz buy ads in Tashkent (22 Oct – 15 Nov 2026):
 white paper, books and newspapers, cardboard, aluminium frames. Each record names the ad ID and date; ranges keep
 the lower bound. No PET, glass or steel price had a clear per-kg figure, so those stay empty rather than guessed.
+
+## 2026-11-19: hosting without the author's PC
+The bot ran on the author's computer, but the project must stay testable until judging ends (29.01.2027).
+Added by hand: webhook mode (`run()` in `__main__.py`, `python-telegram-bot[webhooks]`, secret token derived from the
+bot token), `render.yaml` for a free Render web service, and a `keep-alive` GitHub Action. Long polling stays the
+default when no https URL is set. 169 tests pass.

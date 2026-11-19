@@ -50,6 +50,23 @@ point before making a trip.
 
 ---
 
+## Hosting (free, 24/7)
+
+The bot runs in **webhook mode** when it has a public https URL, and in long-polling mode otherwise.
+
+1. On [Render](https://render.com) choose *New → Blueprint* and pick this repository; `render.yaml` creates a free
+   web service `qayta-bot` (`pip install .`, `python -m qayta`).
+2. Enter `TELEGRAM_BOT_TOKEN` and `GEMINI_API_KEY` (and optionally `ADMIN_USER_ID`) when Render asks.
+3. Render sets `PORT` and `RENDER_EXTERNAL_URL`; the bot registers its webhook at `<url>/telegram` with a secret
+   token derived from the bot token. Stop any locally running copy, because Telegram allows either a webhook
+   or polling, not both.
+4. Free Render services sleep after 15 idle minutes. The `keep-alive` GitHub Action pings the service every
+   10 minutes once the repository variable `QAYTA_BOT_URL` is set to the Render URL.
+
+The free filesystem is ephemeral: SQLite stats reset when Render restarts the service.
+
+---
+
 ## Running tests
 
 ```bash

@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     db_path: str = "data/qayta.db"
     # Telegram user id allowed to use /review; 0 disables the command.
     admin_user_id: int = 0
+    # Public https base URL of a hosted bot (for example on Render). Empty means long polling.
+    webhook_url: str = ""
+    # Port to listen on in webhook mode; hosts such as Render set PORT.
+    port: int = 8080
 
 
 @functools.cache

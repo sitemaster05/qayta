@@ -1,0 +1,20 @@
+# Render Blueprint: free web service running the bot in webhook mode.
+# Render sets PORT and RENDER_EXTERNAL_URL; the bot registers its webhook at <url>/telegram.
+services:
+  - type: web
+    name: qayta-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install .
+    startCommand: python -m qayta
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: WEBAPP_URL
+        value: https://sitemaster05.github.io/qayta/
+      - key: ADMIN_USER_ID
+        sync: false
