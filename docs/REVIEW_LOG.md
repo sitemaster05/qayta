@@ -70,3 +70,9 @@ GitHub's scheduled Actions ran only about once an hour, so the free Render servi
 cron (cron-job.org) now pings the service every 10 minutes. PTB's built-in webhook server answered 404 on `/`, which
 such monitors treat as a failure, so `run()` now serves its own small tornado app: `GET /` returns `ok`, and
 `POST /telegram` checks the secret header (403 otherwise) before queuing the update. 170 tests pass.
+
+## 2026-11-21: live demo video
+Devpost asked for a demo that shows the project working on its device: the first video was built from screenshots.
+New video https://youtu.be/fZ69Y1ZP4is is a live screen recording of Telegram Desktop: /start and the language picker,
+a photo of bottles answered by Gemini (PET Plastic #1, recyclable, preparation tips), then the Mini App map, prices and
+My impact. The submission's demo video URL now points to it.

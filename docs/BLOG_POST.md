@@ -9,7 +9,7 @@ So for Kiroween I built **Qayta** ("again" in Uzbek): a Telegram bot and Mini Ap
 - Bot: https://t.me/AICiroPRobot
 - Mini App: https://sitemaster05.github.io/qayta/
 - Code: https://github.com/sitemaster05/qayta
-- Demo: https://youtu.be/yI6kezZ6bk8
+- Demo: https://youtu.be/fZ69Y1ZP4is
 
 ## Specs before code
 
