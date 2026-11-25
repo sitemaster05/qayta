@@ -16,7 +16,7 @@ Everything below is what actually happened. Changes made outside Kiro are listed
 | Steering docs | Yes | `product.md`, `tech.md`, `structure.md`. |
 | Property-based testing | Yes | `hypothesis` properties in both specs. |
 | Autopilot + permissions | Yes | Autopilot with `permissions.yaml` allow and deny rules. |
-| Agent hooks | No | Not needed for this size of project. |
+| Agent hooks | Yes | Three `PostFileSave` hooks in `.kiro/hooks/` (tests, locales, Mini App data). Added on 25 Nov 2026, after the build. |
 | MCP, powers, custom agents, Kiro CLI/Web/Crew | No | Not used. We list them so the write-up is not inflated. |
 
 ## Spec-driven development
@@ -64,6 +64,22 @@ Properties from the specs, implemented with `hypothesis`:
 PBT found nothing dramatic in these small pure functions, but it forced them to be pure and total, which is what
 made the bot handlers easy to test with mocks.
 
+## Agent hooks
+
+The build itself ran without hooks: every Kiro task already ended with a test run. While polishing the project we saw
+that the same three checks were run by hand after almost every edit, so we turned them into Kiro agent hooks
+(`.kiro/hooks/*.json`, the v2 format Kiro reads at the start of an agent session):
+
+| Hook | Fires when Kiro saves | Runs |
+|---|---|---|
+| `tests-on-save` | any `.py` file under `src/` or `tests/` | `.venv\Scripts\python.exe -m pytest -q -x` |
+| `locales-in-sync` | `locales/*.json` | `pytest tests/test_i18n.py` (all three languages must have identical keys) |
+| `data-check` | `webapp/data/*.json` | `python -m qayta --check` (parses points and prices, checks settings and schema) |
+
+Each hook uses the project venv, the same rule we put in steering, and a path regex as the matcher. Kiro's log
+confirms it loaded them (`hooks.reload.loaded {"read":3,"registered":3}`). The locale hook matters most: a missing
+Russian or Uzbek key does not crash anything, it silently shows the raw key to a user, and now it fails on save.
+
 ## Autopilot and permissions
 
 Kiro paused once during `mini-app`: a sub-agent ran pytest with the global Python, did not find `hypothesis` and
@@ -86,7 +102,7 @@ After that change Kiro completed the remaining 47 tasks in Autopilot without a s
 
 ## Results
 
-- 164 tests pass, `ruff` is clean.
+- 170 tests pass, `ruff` is clean.
 - Bot: [@AICiroPRobot](https://t.me/AICiroPRobot). Mini App: <https://sitemaster05.github.io/qayta/>.
 - Prices: 9 real buy prices from public OLX.uz ads in Tashkent (October–November 2026), each with its ad ID and
   date. Materials without a clear per-kg price stay empty instead of guessed.

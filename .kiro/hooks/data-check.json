@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Validate Mini App data after edits",
+      "trigger": "PostFileSave",
+      "description": "Points and prices ship as JSON to the Mini App. The smoke test parses them and checks settings and the database schema.",
+      "matcher": "[/\\\\]webapp[/\\\\]data[/\\\\].*\\.json$",
+      "action": {
+        "type": "command",
+        "command": ".venv\\Scripts\\python.exe -m qayta --check",
+        "timeout": 60
+      }
+    }
+  ]
+}

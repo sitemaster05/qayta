@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Check uz/ru/en locales after edits",
+      "trigger": "PostFileSave",
+      "description": "Every user-facing string must exist in O'zbek, Russian and English. Runs the i18n tests, including the identical-keys check.",
+      "matcher": "[/\\\\]locales[/\\\\].*\\.json$",
+      "action": {
+        "type": "command",
+        "command": ".venv\\Scripts\\python.exe -m pytest -q tests/test_i18n.py",
+        "timeout": 60
+      }
+    }
+  ]
+}

@@ -76,3 +76,8 @@ Devpost asked for a demo that shows the project working on its device: the first
 New video https://youtu.be/fZ69Y1ZP4is is a live screen recording of Telegram Desktop: /start and the language picker,
 a photo of bottles answered by Gemini (PET Plastic #1, recyclable, preparation tips), then the Mini App map, prices and
 My impact. The submission's demo video URL now points to it.
+
+## 2026-11-25: agent hooks
+Added three Kiro agent hooks in `.kiro/hooks/` (v2 JSON format): run the test suite when a `.py` file in `src/` or
+`tests/` is saved, run the i18n tests when a locale file is saved, and run `python -m qayta --check` when Mini App data
+changes. All use the project venv. Kiro's log on 25 Nov shows `hooks.reload.loaded {"read":3,"registered":3}`.

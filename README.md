@@ -11,7 +11,7 @@ helps residents of Uzbekistan and Central Asia answer two questions before throw
 **Try it:** bot [@AICiroPRobot](https://t.me/AICiroPRobot) · Mini App <https://sitemaster05.github.io/qayta/> · Demo video <https://youtu.be/fZ69Y1ZP4is>
 (opens best inside Telegram) · Languages: O'zbek, Русский, English.
 
-**Built with Kiro for Kiroween 2026.** Specs, steering and task history are in [`.kiro/`](.kiro/). How we used
+**Built with Kiro for Kiroween 2026.** Specs, steering, agent hooks and task history are in [`.kiro/`](.kiro/). How we used
 Kiro, what worked and what we fixed by hand: [`docs/KIRO_WRITEUP.md`](docs/KIRO_WRITEUP.md).
 
 ---
